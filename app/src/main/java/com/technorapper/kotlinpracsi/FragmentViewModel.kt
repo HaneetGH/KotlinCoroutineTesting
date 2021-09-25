@@ -1,6 +1,7 @@
 package com.technorapper.kotlinpracsi
 
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +11,8 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 
 
-class MainActivityViewModel : ViewModel() {
+class FragmentViewModel : ViewModel() {
+
     override fun onCleared() {
 
         super.onCleared()
@@ -28,15 +30,15 @@ class MainActivityViewModel : ViewModel() {
 
     }
 
-     fun testSime() {
+    fun testSime() {
         CoroutineScope(Dispatchers.IO).launch {
-   var abv=launch { 123 }
-      var abc=      runBlocking { 123 }
+            var abv = launch { 123 }
+            var abc = runBlocking { 123 }
             var resultOneDeferred = async { println("test one ${System.currentTimeMillis()}") }
             var resultTwoDeferred = async { println("test three ${System.currentTimeMillis()}") }
-           var value =  async { println("test two ${System.currentTimeMillis()}")  }.await()
+            var value = async { println("test two ${System.currentTimeMillis()}") }.await()
             async { println("test four ${System.currentTimeMillis()}") }.await()
-           // val combinedResult = resultOneDeferred.await() + resultTwoDeferred.await()
+            // val combinedResult = resultOneDeferred.await() + resultTwoDeferred.await()
             awaitAll(async {
                 println("test five ${System.currentTimeMillis()}")
             }, async {
@@ -58,8 +60,7 @@ class MainActivityViewModel : ViewModel() {
 
     }
 
-    fun ekHor()
-    {
+    fun ekHor() {
 
 
     }
@@ -114,6 +115,7 @@ class MainActivityViewModel : ViewModel() {
             // do some stuff after data has been processed, for example update UI
         }
     }
+
     sealed class MainStateEvent {
 
         object FetchImages : MainStateEvent()
