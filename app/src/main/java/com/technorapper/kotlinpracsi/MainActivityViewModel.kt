@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 
-import kotlinx.coroutines.flow.collect
-
 
 class MainActivityViewModel : ViewModel() {
     override fun onCleared() {
@@ -28,15 +26,15 @@ class MainActivityViewModel : ViewModel() {
 
     }
 
-     fun testSime() {
+    fun testSime() {
         CoroutineScope(Dispatchers.IO).launch {
-   var abv=launch { 123 }
-      var abc=      runBlocking { 123 }
+            var abv = launch { 123 }
+            var abc = runBlocking { 123 }
             var resultOneDeferred = async { println("test one ${System.currentTimeMillis()}") }
             var resultTwoDeferred = async { println("test three ${System.currentTimeMillis()}") }
-           var value =  async { println("test two ${System.currentTimeMillis()}")  }.await()
+            var value = async { println("test two ${System.currentTimeMillis()}") }.await()
             async { println("test four ${System.currentTimeMillis()}") }.await()
-           // val combinedResult = resultOneDeferred.await() + resultTwoDeferred.await()
+            // val combinedResult = resultOneDeferred.await() + resultTwoDeferred.await()
             awaitAll(async {
                 println("test five ${System.currentTimeMillis()}")
             }, async {
@@ -58,8 +56,7 @@ class MainActivityViewModel : ViewModel() {
 
     }
 
-    fun ekHor()
-    {
+    fun ekHor() {
 
 
     }
@@ -113,7 +110,49 @@ class MainActivityViewModel : ViewModel() {
 
             // do some stuff after data has been processed, for example update UI
         }
+
+        fun scopeOperator() {
+
+            var letW = Person2("Alice", 20, "Amsterdam").let {
+                println(it)
+                it.name = "London"
+                it.age = 22;
+                println(it)
+                22
+            }//value
+
+            var runW = Person2("Alice", 20, "Amsterdam").run {
+                println(this.age)
+                name = "London"
+                age = 22;
+                22
+            }//Value
+
+
+            var applyW = Person2("Alice", 20, "Amsterdam").apply {
+                println(this)
+                name = "London"
+                age = 22;
+
+            }//Person
+
+            var withW = with(Person2("Alice", 20, "Amsterdam")){
+                "22"
+
+            }//value
+
+            var lalsoW = Person2("Alice", 20, "Amsterdam").also {
+                println(it)
+                it.name = "London"
+                it.age = 22;
+                println(it)
+
+            }//Person
+
+
+        }
     }
+
     sealed class MainStateEvent {
 
         object FetchImages : MainStateEvent()
