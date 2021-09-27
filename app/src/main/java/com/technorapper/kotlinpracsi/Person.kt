@@ -1,10 +1,11 @@
 package com.technorapper.kotlinpracsi
 
-class Person(s: String, i: Int, s1: String) {
+abstract class Person<out T, out Z, in Y>(s: T, i: Z, s1: Y) {
 
-    lateinit var name: String
-    lateinit var objective: String
-    lateinit var founder: String
+    abstract fun test(yes: Y): T
+
+
 }
 
-data class Person2(var name: String, var age: Int, var city: String)
+data class Person2<T, Z, Y>(var name: T, var age: Z, var city: Y)
+

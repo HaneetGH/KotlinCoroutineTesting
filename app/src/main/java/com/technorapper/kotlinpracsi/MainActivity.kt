@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.technorapper.kotlinpracsi.fragment.SecondFragment
 import com.technorapper.kotlinpracsi.fragment.BlankFragment
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainActivityViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.testSime()
     }
-
+ fun test(){}
     override fun onDestroy() {
         super.onDestroy()
     }

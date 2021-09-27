@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.technorapper.kotlinpracsi.R
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity : MainActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
